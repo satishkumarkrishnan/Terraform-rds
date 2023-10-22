@@ -13,7 +13,7 @@ variable "db_password" {
     description ="RDS DB Password"
     type        = string
     sensitive   = true
-    default     = "rds123"
+    default     = "rds123456"
 }
 
 variable "db_port" {
