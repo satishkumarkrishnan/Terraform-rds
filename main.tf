@@ -42,7 +42,7 @@ resource "aws_db_subnet_group" "terraform_subnet_group" {
 #To Create DB Parameter Group Name 
 resource "aws_db_parameter_group" "terraform_db_param" {
   name   = "education"
-  family = "postgres14"
+  family = "mysql5.7"
 
   parameter {
     name  = "log_connections"
