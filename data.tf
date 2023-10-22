@@ -5,9 +5,9 @@ data "aws_subnet" "vpc_fe_subnet" {
   }  
 }
 
-/*data "aws_db_subnet_group" "database" {
+data "aws_db_subnet_group" "database" {
   name = "tf-database-subnet-group"
-}*/
+}
 
 data "aws_availability_zones" "available" {
   state = "available"

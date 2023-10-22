@@ -17,5 +17,9 @@ output "rds_username" {
 }
 
 output "azs" {
-  value = var.availability_zone.available
+  value = data.aws_availability_zones.available.names
+}
+
+output "rds_subnets" {
+  value = module.rds.vpc_fe_subnet
 }

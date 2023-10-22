@@ -1,3 +1,8 @@
+variable "region" {
+  description = "AWS region"
+  default     = "ap-northeast-1"
+}
+
 variable "db_name" {
     description ="RDS DB Name"
     type        = string  
@@ -22,4 +27,3 @@ variable "db_subnet_group_name" {
     type        = string  
     default    = "tf_rds_subnet_group_name"   
 }
-
