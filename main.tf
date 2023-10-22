@@ -17,7 +17,7 @@ module "rds" {
 
 #To Create RDS using TF
 resource "aws_db_instance" "terraform_rds" {
-  allocated_storage    = 1
+  allocated_storage    = 10
   db_name              = "mydb"
   engine               = "mysql"
   engine_version       = "5.7"
