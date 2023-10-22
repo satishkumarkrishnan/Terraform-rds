@@ -13,9 +13,9 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-data "aws_security_groups" "test" {  
+/*data "aws_security_groups" "test" {  
   filter {
     name   = "sg-id"
     values = ["${aws_vpc.}"]
   }
-}
+}*/
