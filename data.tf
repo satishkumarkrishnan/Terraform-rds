@@ -1,4 +1,3 @@
-
 data "aws_subnet" "vpc_fe_subnet" {
   filter {
     name   = "tag:Name"
