@@ -1,12 +1,13 @@
 data "aws_subnet" "vpc_fe_subnet" {
+  depends_on = [module.rds]
   filter {
     name   = "tag:Name"
-    values = ["tokyo-subnets-0"] # insert value here
+    values = ["tokyo-subnets-0"] # insert value here  
   }  
 }
 
 data "aws_db_subnet_group" "database" {
-  name = "tf-database-subnet-group"
+  name = "tokyo_db_subnet"
 }
 
 data "aws_availability_zones" "available" {
