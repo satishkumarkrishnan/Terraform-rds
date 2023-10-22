@@ -1,17 +1,27 @@
+terraform {
+  required_version = ">= 1.0.0, < 2.0.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0.0"
+    }
+  }
+}
 
 #To use the VPC module already created
-module "rds_vpc" {
-  source               = "git@github.com:satishkumarkrishnan/Terraform_ami.git"
+/*module "rds" {
+  source               = "git@github.com:satishkumarkrishnan/Terraform_Final.git"
   name                 = "tokyo_rds_vpc"
-  cidr                 = "aws_subnet."
+  #cidr                 = ""
   azs                  = data.aws_availability_zones.available
  # public_subnets       = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
   enable_dns_hostnames = true
   enable_dns_support   = true
-}
+}*/
 
 #To Create RDS using TF
-/*resource "aws_db_instance" "terraform_rds" {
+resource "aws_db_instance" "terraform_rds" {
   allocated_storage    = 1
   db_name              = "mydb"
   engine               = "mysql"
@@ -44,4 +54,4 @@ resource "aws_db_parameter_group" "terraform_db_param" {
     name  = "log_connections"
     value = "1"
   }
-}*/
+}
