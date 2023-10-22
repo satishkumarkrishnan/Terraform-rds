@@ -33,7 +33,7 @@ resource "aws_db_instance" "terraform_rds" {
 #To Create DB Subnet Group Name
 resource "aws_db_subnet_group" "terraform_subnet_group" {
   name       = "tokyo_db_subnet"
-  subnet_ids = module.rds.vpc_fe_subnet
+  subnet_ids = module.rds.vpc_fe_subnet.id
     tags = {
     Name = "tokyo_db_subnet"
   }  

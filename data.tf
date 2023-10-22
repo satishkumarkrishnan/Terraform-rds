@@ -8,6 +8,7 @@ data "aws_subnet" "vpc_fe_subnet" {
 
 data "aws_db_subnet_group" "database" {
   name = "tokyo_db_subnet"
+  depends_on = [module.rds]
 }
 
 data "aws_availability_zones" "available" {
