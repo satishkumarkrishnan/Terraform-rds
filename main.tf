@@ -1,20 +1,13 @@
-terraform {
-  required_version = ">= 1.0.0, < 2.0.0"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0.0"
-    }
-  }
-}
 
 #To use the VPC module already created
 module "rds_vpc" {
-  source         = "git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"  
-  azs            =  data.aws_availability_zones.available.names
-  count           = length(data.aws_subnet.vpc_fe_subnet)
-  private_subnet = [data.aws_subnet.vpc_fe_subnet[count.index].id]
+  source               = "git@github.com:satishkumarkrishnan/Terraform_ami.git"
+  name                 = "tokyo_rds_vpc"
+  cidr                 = "aws_subnet."
+  azs                  = data.aws_availability_zones.available
+ # public_subnets       = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
+  enable_dns_hostnames = true
+  enable_dns_support   = true
 }
 
 #To Create RDS using TF
@@ -26,8 +19,8 @@ module "rds_vpc" {
   instance_class       = "db.t3.micro"
   username             = var.db_name
   password             = var.db_password  
-  #db_subnet_group_name = data.aws_db_subnet_group.terraform_subnet_group.name
-  vpc_security_group_ids = [module.rds_vpc.vpc_fe_sg]
+  db_subnet_group_name = data.aws_db_subnet_group.terraform_subnet_group.name
+  vpc_security_group_ids = [data.vpc_fe_sg]
   parameter_group_name =  aws_db_parameter_group.terraform_db_param.name
   skip_final_snapshot  = true
 }
@@ -36,7 +29,7 @@ module "rds_vpc" {
 resource "aws_db_subnet_group" "terraform_subnet_group" {
   name       = "tokyo_db_subnet"
   count      = length(data.aws_subnet.fe_subnet.id)
-  subnet_ids = module.rds_vpc.vpc_fe_subnet.cidr_block[count].ipv6_cidr_block
+  subnet_ids = data.vpc_fe_subnet.cidr_block[count].ipv6_cidr_block
     tags = {
     Name = "tokyo_db_subnet"
   }  

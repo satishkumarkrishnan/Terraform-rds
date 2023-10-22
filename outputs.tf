@@ -15,3 +15,7 @@ output "rds_username" {
   value       = aws_db_instance.terraform_rds.username
   sensitive   = true
 }
+
+output "azs" {
+  value = var.availability_zone.available
+}
