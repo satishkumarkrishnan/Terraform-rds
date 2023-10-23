@@ -11,7 +11,7 @@ terraform {
 
 #To use the VPC module already created
 module "rds" {
-  source    = "git@github.com:satishkumarkrishnan/terraform-aws-vpc.git"   
+  source    = "git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"   
    
 }
 
