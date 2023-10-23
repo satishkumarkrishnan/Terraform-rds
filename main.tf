@@ -10,10 +10,10 @@ terraform {
 }
 
 #To use the VPC module already created
-module "rds" {
-  source    = "git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"   
+#module "rds" {
+#  source    = "git@github.com:satishkumarkrishnan/terraform-aws-vpc.git?ref=main"   
    
-}
+#}
 
 #To Create RDS using TF
 resource "aws_db_instance" "terraform_rds" {
